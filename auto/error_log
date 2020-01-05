@@ -1,0 +1,42 @@
+[10-Apr-2014 02:41:06] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 166
+[10-Apr-2014 02:43:12] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/Encoder/QpEncoder.php on line 200
+[10-Apr-2014 02:45:02] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 209
+[10-Apr-2014 02:47:13] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/StreamFilters/ByteArrayReplacementFilter.php on line 132
+[10-Apr-2014 02:49:23] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/Transport/MailTransport.php on line 163
+[10-Apr-2014 02:51:04] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 234
+[10-Apr-2014 02:53:03] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterReader/Utf8Reader.php on line 105
+[10-Apr-2014 02:55:05] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/Encoder/QpEncoder.php on line 249
+[10-Apr-2014 02:57:15] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterReader/Utf8Reader.php on line 116
+[10-Apr-2014 02:59:03] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 234
+[10-Apr-2014 03:01:08] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/StreamFilters/ByteArrayReplacementFilter.php on line 145
+[10-Apr-2014 03:02:56] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/Encoder/QpEncoder.php on line 249
+[10-Apr-2014 03:06:06] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 234
+[10-Apr-2014 03:09:46] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 213
+[10-Apr-2014 03:11:05] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/newsng/public_html/includes/lib/classes/Swift/CharacterStream/NgCharacterStream.php on line 234
+[12-Apr-2014 10:01:01] PHP Parse error:  syntax error, unexpected $end in /home/newsng/public_html/auto/send_newsletter.php on line 119
+[14-Apr-2014 16:06:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:08:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:10:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:12:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:14:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:16:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:18:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:20:02] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:22:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:24:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:26:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:28:12] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:30:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:32:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:34:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:36:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:38:13] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:40:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:42:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:44:02] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:46:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:48:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:50:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:52:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:54:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
+[14-Apr-2014 16:56:01] PHP Fatal error:  Call to undefined method PHPMailer::Sender() in /home/newsng/public_html/auto/send_newsletter.php on line 60
