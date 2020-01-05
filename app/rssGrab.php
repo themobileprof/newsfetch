@@ -9,7 +9,7 @@ class rssGrab  {
 	*/
 	private $pdo;
 	 
-	public $doc;
+	private	$doc;
 	
 	private $sourceid;
 	
@@ -83,12 +83,14 @@ class rssGrab  {
 		$data = curl_exec($ch);
 		curl_close($ch);
 		
-		//print_r($data);
-		//exit();
+		// print_r($data);
+		// exit();
 		
 		$use_errors = libxml_use_internal_errors(true);
 		try {
+			// echo "One";
 			$this->doc = new \SimpleXmlElement($data, LIBXML_NOCDATA);
+			print_r($this->doc);
 			if(isset($this->doc->channel)):
 				// $this->parseRSS($doc);
 				return 'rss';
@@ -99,12 +101,13 @@ class rssGrab  {
 
 
 		} catch (Exception $e) {
+			// echo "Two";
 			$this->failedURL();
 			return FALSE;
 		}
-		// echo "this: ";
-		// print_r($doc); //debug
-		// exit(); //////////////
+		echo "this: ";
+		print_r($doc); //debug
+		exit(); //////////////
 		
 		
 	}

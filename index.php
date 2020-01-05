@@ -15,9 +15,13 @@ foreach ($sources as $source){
 	// echo $sourceid;
 	$feedType = $grabber->getFeed($source['rss']); 
 	if($feedtype == 'rss'){
+		echo 'rss';
 		$grabber->parseRSS();
 	} else if ($feedtype == 'atom') {
+		echo 'atom';
 		$grabber->parseAtom();
+	} else {
+		echo 'None';
 	}
 	$grabber->addDb ($source->pdo, $source['catId']);
 }
