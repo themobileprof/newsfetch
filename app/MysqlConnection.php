@@ -1,6 +1,6 @@
 <?php 
 
-class phpConnection {
+class MysqlConnection {
     /**
      * PDO instance
      * @var type 
