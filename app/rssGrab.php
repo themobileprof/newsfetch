@@ -30,7 +30,7 @@ class rssGrab  {
 
 	function getSources (){
 		// Get all RSS feeds stored in database
-		$stmt = $this->pdo->query("SELECT `id`,`rss`,`catId` FROM sources WHERE activ = '1'");
+		$stmt = $this->pdo->query("SELECT `id`,`rss`,`catId` FROM news_sources WHERE activ = '1'");
 
 
 		$sources = [];

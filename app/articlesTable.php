@@ -27,14 +27,15 @@ class articlesTable {
 
 	$this->pdo->exec("CREATE TABLE `articles` (
     `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `guId` TEXT,
+    `guId` TEXT UNIQUE,
     `sourceId` INTEGER,
     `title` TEXT,
     `description` TEXT,
     `img` TEXT,
     `url` TEXT,
     `articleDate` TEXT,
-    FOREIGN KEY (`sourceId`) REFERENCES `sources`(`id`)
+    `catId` INTEGER DEFAULT 1,
+    FOREIGN KEY (`sourceId`) REFERENCES `news_sources`(`id`)
 )");
 	}
 

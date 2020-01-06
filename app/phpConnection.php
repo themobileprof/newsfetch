@@ -13,10 +13,10 @@ class phpConnection {
      */
     public function connect() {
         if ($this->pdo == null) {
-		$host = '127.0.0.1';
-		$db   = 'test';
-		$user = 'root';
-		$pass = '';
+		$host = 'localhost';
+		$db   = 'afrikina';
+		$user = 'afrikina';
+		$pass = 'tummy654';
 		$charset = 'utf8mb4';
 
 		$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
