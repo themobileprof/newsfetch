@@ -250,7 +250,7 @@ class rssGrab  {
 				VALUES (:guid,:sourceId,:title,:description,:img,:url,:articleDate)";
 
 				$values = ['guid' => $post["guid"],
-				'sourceid' => $post["sourceid"],
+				'sourceId' => $post["sourceid"],
 				'title' => $post["title"],
 				'description' => $post["description"],
 				'img' => $post["img"],
@@ -264,15 +264,13 @@ class rssGrab  {
 				    echo "\nPDO::errorInfo():\n";
 				    print_r($this->pdo->errorInfo());
 				}
-				$this->pdo->execute($values);
-				exit();
+				//print_r ($values);
+				$stmt->execute($values);
+				//exit();
 			}
 		endif;
 	}
 	
-	function mk_code (){
-		return substr(md5(time()), 0, 10);
-	}
 	
 	function proc_desc ($body){
 		$body = htmlentities(strip_tags($body));
