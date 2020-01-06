@@ -12,6 +12,8 @@ class rssGrab  {
 	private	$doc;
 	
 	private $sourceid;
+
+	private $rssPosts;
 	
 	/**
 	 * Get a web file (HTML, XHTML, XML, image, etc.) from a URL.  Return an
@@ -82,7 +84,13 @@ class rssGrab  {
 		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3");
 		$data = curl_exec($ch);
 		curl_close($ch);
-		
+
+		if (strstr($rss_feed, "ventures")){
+			
+			 print_r($data);
+			 exit();
+
+		}
 		// print_r($data);
 		// exit();
 		
@@ -90,11 +98,11 @@ class rssGrab  {
 		try {
 			// echo "One";
 			$this->doc = new \SimpleXmlElement($data, LIBXML_NOCDATA);
-			print_r($this->doc);
-			if(isset($this->doc->channel)):
+			// print_r($this->doc);
+			if(isset($this->doc[0]->channel)):
 				// $this->parseRSS($doc);
 				return 'rss';
-			elseif(isset($this->doc->entry)):
+			elseif(isset($this->doc[0]->entry)):
 				// $this->parseAtom($doc);
 				return 'atom';
 			endif;
@@ -105,40 +113,16 @@ class rssGrab  {
 			$this->failedURL();
 			return FALSE;
 		}
-		echo "this: ";
-		print_r($doc); //debug
-		exit(); //////////////
+		// echo "this: ";
+		// print_r($doc); //debug
+		// exit(); //////////////
 		
 		
 	}
 	
-	// Returns the error message on improper XML
-	function isXML($xml){
-		libxml_use_internal_errors(true);
 	
-		$doc = new DOMDocument('1.0', 'utf-8');
-		$doc->loadXML($xml);
-	
-		$errors = libxml_get_errors();
-	
-		if(empty($errors)){
-			return true;
-		}
-	
-		$error = $errors[0];
-		if($error->level < 3){
-			return true;
-		}
-	
-		$explodedxml = explode("r", $xml);
-		$badxml = $explodedxml[($error->line)-1];
-	
-		$message = $error->message . ' at line ' . $error->line . '. Bad XML: ' . htmlentities($badxml);
-		return $message;
-	}
-	
-	function parseRSS(){
-		$xml = $this->doc;
+	function parseRSS($sourceid){
+		$xml = $this->doc[0];
 		$cnt = count($xml->channel->item);
 		
 		for($i=0; $i<$cnt; $i++){
@@ -148,8 +132,8 @@ class rssGrab  {
 			$d['pubdate'] = date("Y-m-d",strtotime($xml->channel->item[$i]->pubDate));
 			$d['guid'] = stripslashes(htmlentities($xml->channel->item[$i]->guid,ENT_QUOTES,'UTF-8'));
 			$d['url'] = htmlentities($xml->channel->item[$i]->link,ENT_QUOTES,'UTF-8');
-			$d['img'] = stripslashes($xml->channel->item[$i]->img,ENT_QUOTES,'UTF-8');
-			$d['sourceid'] = $this->sourceid;
+			$d['img'] = stripslashes(htmlentities($xml->channel->item[$i]->img,ENT_QUOTES,'UTF-8'));
+			$d['sourceid'] = $sourceid;
 			
 			// Get Image if image field is empty
 			if (empty($d['img'])){
@@ -161,11 +145,13 @@ class rssGrab  {
 			
 			
 			$this->rssPosts[]=$d;
+
 		}
+		//print_r($this->rssPosts);
 	}
 	
-	function parseAtom(){
-		$xml = $this->doc;
+	function parseAtom($sourceid){
+		$xml = $this->doc[0];
 		$cnt = count($xml->entry);
 		
 		for($i=0; $i<$cnt; $i++){
@@ -189,7 +175,7 @@ class rssGrab  {
 			endif;
 			
 			$d['img'] = $this->get_first_image($d['description']);
-			$d['sourceid'] = $this->sourceid;
+			$d['sourceid'] = $sourceid;
 			
 			//Cleanse description
 			$d['description'] = $this->proc_desc ($d['description']);
@@ -212,7 +198,7 @@ class rssGrab  {
 	}
 	
 	function get_first_image($htmlStr){
-		$html = new DOMDocument();        
+		$html = new \DOMDocument();        
 		$html->loadHTML($htmlStr);
 	   //get the first image tag from the description HTML
 		$imgTag = $html->getElementsByTagName('img');
@@ -248,8 +234,10 @@ class rssGrab  {
 		/////////////////////////////*/
 	}
 	
-	function addDb ($link, $type){
+	function addDb ($type = 1){
+		echo "Seen DB";
 		if(is_array($this->rssPosts)):
+			echo "Seen is Array";
 			// Includes for related articles
 			//require_once '../includes/class.stemmer.inc';
 			//require_once '../includes/cleansearch.php';
@@ -257,70 +245,27 @@ class rssGrab  {
 			
 			foreach($this->rssPosts as $post){
 				//Make article code
-				$artid = random_str(10);
+				$sql = "INSERT INTO articles (
+				`guId`,`sourceId`,`title`,`description`,`img`,`url`,`articleDate`)
+				VALUES (:guid,:sourceId,:title,:description,:img,:url,:articleDate)";
+
+				$values = ['guid' => $post["guid"],
+				'sourceid' => $post["sourceid"],
+				'title' => $post["title"],
+				'description' => $post["description"],
+				'img' => $post["img"],
+				'url' => $post["url"],
+				'articleDate' => $post["pubdate"]];
+
+				echo $sql;
 				
-				$sql = "INSERT INTO articles SET
-				id = '$artid',
-				guId = '$post[guid]',
-				sourceId = '$post[sourceid]',
-				title = '$post[title]',
-				description = '$post[description]',
-				img = '$post[img]',
-				url = '$post[url]',
-				articleDate = '$post[pubdate]',
-				catId = '$type'";
-				//echo $sql;
-				if ($this->pdo->exec($sql)):
-					//Create shortcode
-					//$this->addshortcode ($this->dblink,$artid);
-					
-					
-					
-					/*/////////////////////////////////////////////////////////////
-					//////////////////////////////////////////////////////////////
-					// CREATE RELATED ARTICLES
-					//////////////////////////////////////////////////////////////
-					$stemmer = new Stemmer;
-					$clean_string = new cleaner();
-					
-					// Prepare for alternative search
-					$split = split(" ",$post['title']);
-					  foreach ($split as $array => $value) {
-						  if (strlen($value) < 3) {
-							  continue;
-						  }
-						  $stemmed_string = $clean_string->parseString($value);
-						  $stemmed_string = $stemmer->stem($stemmed_string);
-						  
-						  $new_string .= $stemmed_string.' ';
-					  }
-					  
-					$new_string=substr($new_string,0,(strLen($new_string)-1));
-					
-					
-					$search_news = new related();
-					
-					// Search with full text search //////////////////////////////
-					if (!$search_news->fulltext($post['title'], $search_news->dblink)):
-						// If full text fails, proceed to the next level
-						//Search with alternative text search ////////////////////
-						$showr = $search_news->altsearch($new_string, $link);
-					elseif (count($search_news->rel) < 10): // if results are less than 10
-						$remaining = 10 - count($search_news->rel);
-						//Search with alternative text search ////////////////////
-						$showr = $search_news->altsearch($new_string, $link, $remaining);
-					endif;
-					
-					// Add to database
-					$search_news->add2db ($artid, $search_news->dblink);
-					echo "Seen related add";
-					
-					/////////////////////////////////////////////////////////////////////////////////
-					/////////////////////////////////////////////////////////////////////////////////
-					///////////////////////////////////////////////////////////////////////////////*/
-				else:
-					echo "No add";
-				endif;
+				$stmt = $this->pdo->prepare($sql);
+				if (!$stmt) {
+				    echo "\nPDO::errorInfo():\n";
+				    print_r($this->pdo->errorInfo());
+				}
+				$this->pdo->execute($values);
+				exit();
 			}
 		endif;
 	}

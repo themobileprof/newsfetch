@@ -1,1 +1,48 @@
-[]
+[
+    {
+        "name": "dmx/simple-xml-parser",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Datamedrix/simple-xml-parser.git",
+            "reference": "d2a13e82df4790001bb80f3eada375ce3ee32e75"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Datamedrix/simple-xml-parser/zipball/d2a13e82df4790001bb80f3eada375ce3ee32e75",
+            "reference": "d2a13e82df4790001bb80f3eada375ce3ee32e75",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "ext-libxml": "*",
+            "ext-simplexml": "*",
+            "php": "^7.2.1"
+        },
+        "require-dev": {
+            "ext-mbstring": "*",
+            "friendsofphp/php-cs-fixer": "^2.15",
+            "mockery/mockery": "^1.2",
+            "phpunit/phpunit": "^8.3"
+        },
+        "time": "2019-09-09T08:39:49+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "DMX\\SimpleXML\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A simple XML Parser which parses an XML into a normalized array based on SimpleXMLElement.",
+        "keywords": [
+            "SimpleXML",
+            "parser",
+            "xml"
+        ]
+    }
+]

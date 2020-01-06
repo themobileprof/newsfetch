@@ -12,14 +12,13 @@ $sources = $grabber->getSources();
 foreach ($sources as $source){
 	
 	$sourceid = $source['id'];
-	// echo $sourceid;
-	$feedType = $grabber->getFeed($source['rss']); 
+	$feedtype = $grabber->getFeed($source['rss']); 
 	if($feedtype == 'rss'){
 		echo 'rss';
-		$grabber->parseRSS();
+		$grabber->parseRSS($sourceid);
 	} else if ($feedtype == 'atom') {
 		echo 'atom';
-		$grabber->parseAtom();
+		$grabber->parseAtom($sourceid);
 	} else {
 		echo 'None';
 	}

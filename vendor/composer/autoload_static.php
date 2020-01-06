@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit253043a25e9facd1cce5b733b3d52e0e
 {
     public static $prefixLengthsPsr4 = array (
+        'D' => 
+        array (
+            'DMX\\SimpleXML\\' => 14,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -14,6 +18,10 @@ class ComposerStaticInit253043a25e9facd1cce5b733b3d52e0e
     );
 
     public static $prefixDirsPsr4 = array (
+        'DMX\\SimpleXML\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dmx/simple-xml-parser/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',

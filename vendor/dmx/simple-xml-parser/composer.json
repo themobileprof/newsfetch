@@ -1,0 +1,38 @@
+{
+    "name": "dmx/simple-xml-parser",
+    "description": "A simple XML Parser which parses an XML into a normalized array based on SimpleXMLElement.",
+    "keywords": ["xml", "parser", "simpleXML"],
+    "license": "MIT",
+    "type": "library",
+    "version": "1.0.3",
+    "require": {
+        "php": "^7.2.1",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "ext-libxml": "*"
+    },
+    "require-dev": {
+        "ext-mbstring": "*",
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "mockery/mockery": "^1.2",
+        "phpunit/phpunit": "^8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "DMX\\SimpleXML\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DMX\\SimpleXML\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "style-fix": "vendor/bin/php-cs-fixer fix",
+        "style-check": "vendor/bin/php-cs-fixer fix --dry-run --using-cache=no"
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
