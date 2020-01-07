@@ -105,11 +105,11 @@ class rssGrab  {
 			endif;
 
 
-		} catch (Exception $e) {
-			// echo "Two";
+		} catch (Throwable $t) {
 			$this->failedURL();
-			return FALSE;
+			continue;
 		}
+
 		// echo "this: ";
 		// print_r($doc); //debug
 		// exit(); //////////////
@@ -254,7 +254,7 @@ class rssGrab  {
 				'url' => $post["url"],
 				'articleDate' => $post["pubdate"]];
 
-				echo $sql;
+				//echo $sql;
 				
 				$stmt = $this->pdo->prepare($sql);
 				if (!$stmt) {
