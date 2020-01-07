@@ -107,7 +107,7 @@ class rssGrab  {
 
 		} catch (Throwable $t) {
 			$this->failedURL();
-			continue;
+			//continue;
 		}
 
 		// echo "this: ";
