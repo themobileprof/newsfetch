@@ -1,4 +1,4 @@
-db/
-vendor/
+db/*
+vendor/*
 app/Config.php
 
