@@ -21,9 +21,6 @@ class rssGrab  {
 	 */
 	public function __construct ($pdo){
 
-		/**
-		* connect to the SQLite database
-		*/
 		$this->pdo = $pdo;
 
 	}
