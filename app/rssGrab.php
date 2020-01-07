@@ -71,9 +71,9 @@ class rssGrab  {
 	
 	function getFeed ($rss_feed){
 		//echo "Get_RSS_Upd: ".$rss_feed;
-		$ch = \curl_init($rss_feed);
-		\curl_setopt($ch, CURLOPT_TIMEOUT, 3);
-		\curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		$ch = curl_init($rss_feed);
+		curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		\curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		\curl_setopt($ch, CURLOPT_HEADER, 0);
 		\curl_setopt($ch, CURL_HTTP_VERSION_1_1, true);
@@ -82,12 +82,6 @@ class rssGrab  {
 		$data = \curl_exec($ch);
 		\curl_close($ch);
 
-		if (strstr($rss_feed, "ventures")){
-			
-			 //print_r($data);
-			 //exit();
-
-		}
 		// print_r($data);
 		// exit();
 		
@@ -96,19 +90,24 @@ class rssGrab  {
 			 //echo "One";
 			$this->doc = new \SimpleXmlElement($data, LIBXML_NOCDATA);
 			// print_r($this->doc);
-			if(isset($this->doc[0]->channel)):
-				// $this->parseRSS($doc);
-				return 'rss';
-			elseif(isset($this->doc[0]->entry)):
-				// $this->parseAtom($doc);
-				return 'atom';
-			endif;
 
 
 		} catch (Throwable $t) {
-			$this->failedURL();
-			//continue;
+			try {
+				$this->doc = new \SimpleXmlElement($data, NULL, TRUE);
+			} catch (Throwable $t){
+				$this->failedURL($rss_feed);
+				return false;
+			}
 		}
+		
+		if(isset($this->doc[0]->channel)):
+			// $this->parseRSS($doc);
+			return 'rss';
+		elseif(isset($this->doc[0]->entry)):
+			// $this->parseAtom($doc);
+			return 'atom';
+		endif;
 
 		// echo "this: ";
 		// print_r($doc); //debug
@@ -182,8 +181,8 @@ class rssGrab  {
 		}
 	}
 	
-	function failedURL (){
-		$this->pdo->exec("UPDATE `sources` SET `fail` = `fail`+1 WHERE `id` = '$this->sourceid' LIMIT 1");
+	function failedURL ($feed){
+		$this->pdo->exec("UPDATE `sources` SET `fail` = `fail`+1 WHERE `rss` = '$feed' LIMIT 1");
 	}
 	
 	function cleans_1($d){
