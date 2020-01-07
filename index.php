@@ -2,12 +2,14 @@
  
 require 'vendor/autoload.php';
  
-use App\SQLiteConnection as SQLiteConnection;
+use App\Connection as Connection;
 use App\rssGrab as rssGrab;
 
-$grabber = new rssGrab((new SQLiteConnection())->connect());
+$grabber = new rssGrab((new Connection())->connect());
 // create new tables
 $sources = $grabber->getSources();
+//print_r($sources);
+//exit();
  
 foreach ($sources as $source){
 	
