@@ -4,21 +4,17 @@
 require 'vendor/autoload.php';
  
 use App\Connection as Connection;
-use App\sourcesTable as sourcesTable;
-use App\articlesTable as articlesTable;
+use App\dbTables as dbTables;
 
-$src = new sourcesTable((new Connection())->connect());
+$dbSchema = new dbTables((new Connection())->connect());
+
+$sqlfile = ($dbSchema->dbType() == "MySQL") ? file_get_contents('sql/mysql_afrikina.sql') : file_get_contents('sql/sqlite_afrikina.sql');
+
 // create new tables
-// $src->createTables();
+$dbSchema->createTables($sqlfile);
  
 // Populate Tables
-$src->populateTable();
+$dbSchema->populateTable();
 
-$art = new articlesTable((new Connection())->connect());
-// create new tables
-$art->createTables();
- 
-// Populate Tables
-// $src->populateTable();
 
 echo "complete";

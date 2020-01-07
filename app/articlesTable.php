@@ -26,7 +26,7 @@ class articlesTable {
 	$this->pdo->exec("DROP TABLE IF EXISTS `articles`");
 
 	$this->pdo->exec("CREATE TABLE `articles` (
-    `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    `id` INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     `guId` TEXT UNIQUE,
     `sourceId` INTEGER,
     `title` TEXT,

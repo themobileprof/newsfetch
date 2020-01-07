@@ -47,6 +47,7 @@ class Connection {
 		$dsn = "mysql:host=".Config::MYSQL_HOST.";dbname=".Config::MYSQL_DB.";";
 		try {
 			$this->pdo = new \PDO($dsn, Config::MYSQL_USERNAME, Config::MYSQL_PASSWORD);
+			$this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 		} catch (\PDOException $e) {
 		     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 		}

@@ -5,33 +5,31 @@ namespace App;
 /**
  * SQLite Create Table Demo
  */
-class sourcesTable {
-	    /**
-     * PDO object
-     * @var \PDO
-     */
-    private $pdo;
- 
-    /**
-     * connect to the SQLite database
-     */
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
-    }
- 
-    /**
-     * create tables 
-     */
-    public function createTables() {
-	$this->pdo->exec("DROP TABLE IF EXISTS `sources`");
+class dbTables {
+	/**
+	* PDO object
+	     * @var \PDO
+	*/
+	private $pdo;
+	 
+	/**
+	* connect to the database
+	*/
+	public function __construct($pdo) {
+	    $this->pdo = $pdo;
+	}
+		 
+		/**
+	* create tables 
+	*/
 
-	$this->pdo->exec("CREATE TABLE `news_sources` (
-    `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    `rss` TEXT UNIQUE,
-    `catId` INTEGER DEFAULT 1,
-    `fail` INTEGER DEFAULT 0,
-    `activ` TEXT DEFAULT 1
-)");
+	public function dbType(){
+	    return Config::DATABASE_TYPE;
+	}
+
+	public function createTables($sql) {
+		$this->pdo->exec($sql);
+
 	}
 
 	public function populateTable (){
