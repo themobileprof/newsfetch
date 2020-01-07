@@ -71,16 +71,16 @@ class rssGrab  {
 	
 	function getFeed ($rss_feed){
 		//echo "Get_RSS_Upd: ".$rss_feed;
-		$ch = curl_init($rss_feed);
-		curl_setopt($ch, CURLOPT_TIMEOUT, 3);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_setopt($ch, CURL_HTTP_VERSION_1_1, true);
-		curl_setopt($ch, CURLOPT_ENCODING, "gzip, deflate");
-		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3");
-		$data = curl_exec($ch);
-		curl_close($ch);
+		$ch = \curl_init($rss_feed);
+		\curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+		\curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		\curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		\curl_setopt($ch, CURLOPT_HEADER, 0);
+		\curl_setopt($ch, CURL_HTTP_VERSION_1_1, true);
+		\curl_setopt($ch, CURLOPT_ENCODING, "gzip, deflate");
+		\curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3");
+		$data = \curl_exec($ch);
+		\curl_close($ch);
 
 		if (strstr($rss_feed, "ventures")){
 			
