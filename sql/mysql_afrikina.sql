@@ -22,9 +22,6 @@ CREATE TABLE `news_sources` (
     PRIMARY KEY (`id`),
     UNIQUE INDEX news_sources_rss_unique (`rss`)
 )
-ENGINE=InnoDB
-DEFAULT CHARSET=utf8;
-
 
 CREATE TABLE `articles` (
     `id` INT (10) NOT NULL AUTO_INCREMENT,
@@ -39,9 +36,6 @@ CREATE TABLE `articles` (
     PRIMARY KEY (`id`),
     UNIQUE INDEX articles_gu_id_unique (`guId`)
 )
-ENGINE=InnoDB
-DEFAULT CHARSET=utf8;
-
 
 ALTER TABLE `articles`
 ADD FOREIGN KEY news_sources_articles_fk (`sourceId`) REFERENCES `news_sources`(`id`);

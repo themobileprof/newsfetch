@@ -24,6 +24,6 @@ foreach ($sources as $source){
 	} else {
 		echo 'None';
 	}
-	$grabber->addDb ($source->pdo, $source['catId']);
+	$grabber->addDb ($source['catId']);
 }
 

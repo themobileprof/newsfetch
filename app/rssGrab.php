@@ -27,7 +27,7 @@ class rssGrab  {
 
 	function getSources (){
 		// Get all RSS feeds stored in database
-		$stmt = $this->pdo->query("SELECT `id`,`rss`,`catId` FROM news_sources WHERE activ = '1'");
+		$stmt = $this->pdo->query("SELECT `id`,`rss`,`catId` FROM `news_sources`");
 
 
 		$sources = [];
@@ -84,8 +84,8 @@ class rssGrab  {
 
 		if (strstr($rss_feed, "ventures")){
 			
-			 print_r($data);
-			 exit();
+			 //print_r($data);
+			 //exit();
 
 		}
 		// print_r($data);
@@ -93,7 +93,7 @@ class rssGrab  {
 		
 		$use_errors = libxml_use_internal_errors(true);
 		try {
-			// echo "One";
+			 //echo "One";
 			$this->doc = new \SimpleXmlElement($data, LIBXML_NOCDATA);
 			// print_r($this->doc);
 			if(isset($this->doc[0]->channel)):
@@ -232,9 +232,9 @@ class rssGrab  {
 	}
 	
 	function addDb ($type = 1){
-		echo "Seen DB";
+		//echo "Seen DB";
 		if(is_array($this->rssPosts)):
-			echo "Seen is Array";
+			//echo "Seen is Array";
 			// Includes for related articles
 			//require_once '../includes/class.stemmer.inc';
 			//require_once '../includes/cleansearch.php';
