@@ -84,22 +84,15 @@ class rssGrab  {
 
 		// print_r($data);
 		// exit();
+		libxml_use_internal_errors(true);
+		$this->doc = simplexml_load_string($data);
+		//try { 
+			//$this->doc = new \SimpleXmlElement($data, LIBXML_NOERROR);
 		
-		$use_errors = libxml_use_internal_errors(true);
-		try {
-			 //echo "One";
-			$this->doc = new \SimpleXmlElement($data, LIBXML_NOCDATA);
-			// print_r($this->doc);
-
-
-		} catch (Throwable $t) {
-			try {
-				$this->doc = new \SimpleXmlElement($data, NULL, TRUE);
-			} catch (Throwable $t){
-				$this->failedURL($rss_feed);
-				return false;
-			}
-		}
+		//} catch (Exception $e) { 
+			//echo $e; 
+			//$this->failedURL($rss_feed);
+		//}
 		
 		if(isset($this->doc[0]->channel)):
 			// $this->parseRSS($doc);
@@ -238,10 +231,11 @@ class rssGrab  {
 			//require_once '../includes/class.stemmer.inc';
 			//require_once '../includes/cleansearch.php';
 			//require_once '../includes/related.php';
+		$ignore = (Config::DATABASE_TYPE == 'MySQL') ? 'IGNORE' : '';
 			
 			foreach($this->rssPosts as $post){
 				//Make article code
-				$sql = "INSERT IGNORE INTO articles (
+				$sql = "INSERT $ignore INTO articles (
 				`guId`,`sourceId`,`title`,`description`,`img`,`url`,`articleDate`)
 				VALUES (:guid,:sourceId,:title,:description,:img,:url,:articleDate)";
 
