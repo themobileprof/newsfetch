@@ -242,7 +242,7 @@ class rssGrab  {
 			
 			foreach($this->rssPosts as $post){
 				//Make article code
-				$sql = "INSERT INTO articles (
+				$sql = "INSERT IGNORE INTO articles (
 				`guId`,`sourceId`,`title`,`description`,`img`,`url`,`articleDate`)
 				VALUES (:guid,:sourceId,:title,:description,:img,:url,:articleDate)";
 
