@@ -51,6 +51,6 @@ class Connection {
 		     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 		}
 	}
-        return $this->pdo;
+        //return $this->pdo;
     }
 }
