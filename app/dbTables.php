@@ -33,13 +33,13 @@ class dbTables {
 	}
 
 	public function populateTable (){
-		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('https://m.guardian.ng/category/business-services/business/feed/')");
-		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('http://businessnews.com.ng/feed/')");
-		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('https://www.vanguardngr.com/category/business/feed/')");
-		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('https://www.premiumtimesng.com/category/business/business-news/feed')");
+		$this->pdo->exec("INSERT INTO `news_sources`(rss, source) VALUES('https://m.guardian.ng/category/business-services/business/feed/','Guardian Nigeria')");
+		$this->pdo->exec("INSERT INTO `news_sources`(rss, source) VALUES('http://businessnews.com.ng/feed/','Business News')");
+		$this->pdo->exec("INSERT INTO `news_sources`(rss, source) VALUES('https://www.vanguardngr.com/category/business/feed/','Vanguard Nigeria')");
+		$this->pdo->exec("INSERT INTO `news_sources`(rss,source) VALUES('https://www.premiumtimesng.com/category/business/business-news/feed','Premium Times')");
 		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('https://tribuneonlineng.com/business/feed/')");
-		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('https://www.africanbusinesscentral.com/feed/')");
-		$this->pdo->exec("INSERT INTO `news_sources`(rss) VALUES('http://venturesafrica.com/feed/')");
+		$this->pdo->exec("INSERT INTO `news_sources`(rss, source) VALUES('https://www.africanbusinesscentral.com/feed/','African Business Central')");
+		$this->pdo->exec("INSERT INTO `news_sources`(rss, source) VALUES('http://venturesafrica.com/feed/', 'Ventures Africa')");
 		// $this->pdo->exec("INSERT INTO `sources`(rss) VALUES('')");
 	// $this->pdo->exec("INSERT INTO `sources`(rss) VALUES('')");
 		// $this->pdo->exec("INSERT INTO `sources`(rss) VALUES('')");

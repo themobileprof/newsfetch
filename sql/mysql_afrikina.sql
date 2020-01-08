@@ -27,12 +27,13 @@ CREATE TABLE `articles` (
     `id` INT (10) NOT NULL AUTO_INCREMENT,
     `guId` VARCHAR (100),
     `sourceId` INT (10),
-    `title` VARCHAR (100),
-    `description` VARCHAR (100),
-    `img` VARCHAR (100),
-    `url` VARCHAR (100),
+    `title` VARCHAR (200),
+    `description` TEXT NOT NULL,
+    `img` VARCHAR (200),
+    `url` VARCHAR (200),
     `articleDate` VARCHAR (100),
     `catId` INT (10) DEFAULT 1,
+    `used` SET ('0', '1') DEFAULT 0,
     PRIMARY KEY (`id`),
     UNIQUE INDEX articles_gu_id_unique (`guId`)
 )
